@@ -37,19 +37,6 @@ public class GulimallCorsConfiguration{
         config.addAllowedOrigin("*");
         config.addAllowedHeader("*");
         config.setAllowCredentials(true);
-//        corsConfiguration.addAllowedOrigin("*");
-//
-//        corsConfiguration.addAllowedMethod(HttpMethod.OPTIONS);
-//        corsConfiguration.addAllowedMethod(HttpMethod.POST);
-//        corsConfiguration.addAllowedMethod(HttpMethod.GET);
-//        corsConfiguration.addAllowedMethod(HttpMethod.PUT);
-//        corsConfiguration.addAllowedMethod(HttpMethod.DELETE);
-//        corsConfiguration.addAllowedMethod(HttpMethod.PATCH);
-//        // corsConfiguration.addAllowedMethod("*");
-//        corsConfiguration.addAllowedHeader("*");
-//
-//        corsConfiguration.setMaxAge(7200L);
-//        corsConfiguration.setAllowCredentials(true);
 
         source.registerCorsConfiguration("/**", config);
 
