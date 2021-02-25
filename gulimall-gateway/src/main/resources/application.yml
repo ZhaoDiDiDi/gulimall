@@ -1,14 +1,8 @@
-#spring:
-#  cloud:
-#    nacos:
-#      discovery:
-#        server-addr: 172.0.0.1:8848
-#  application:
-#    name: gulimall-gateway
-#server:
-#  port: 88
 spring:
   cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
     gateway:
       routes:
         - id: query_route
@@ -17,6 +11,19 @@ spring:
             - Query=url,baidu
 
         - id: qq_router
-          uri: https://www.baidu.com
+          uri: https://www.qq.com
           predicates:
             - Query=url,qq
+
+        - id: admin_router
+          uri: lb://renren-fast
+          predicates:
+             - Path=/api/**
+          filters:
+            - RewritePath=/api(?<segment>/?.*),/renren-fast$\{segment}
+  ## 前端项目, api/
+##  http://localhost:88/api/captcha.jpg http://localhost:8080/renren-fast/captcha.jpg  默认先路由到renren-fast服务模块 设置了filters后会把/api替换成/renren-fast
+  application:
+    name: gulimall-gateway
+server:
+  port: 88
