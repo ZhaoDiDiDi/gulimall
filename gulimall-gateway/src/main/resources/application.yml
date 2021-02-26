@@ -21,6 +21,8 @@ spring:
              - Path=/api/**
           filters:
             - RewritePath=/api(?<segment>/?.*),/renren-fast$\{segment}
+            - DedupeResponseHeader=Access-Control-Allow-Credentials Access-Control-Allow-Origin
+            ## 重复响应头去重
   ## 前端项目, api/
 ##  http://localhost:88/api/captcha.jpg http://localhost:8080/renren-fast/captcha.jpg  默认先路由到renren-fast服务模块 设置了filters后会把/api替换成/renren-fast
   application:
